@@ -1,27 +1,10 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
+/** * @license * SPDX-License-Identifier: Apache-2.0 */
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  ChevronRight, 
-  MessageSquare, 
-  Globe, 
-  Zap, 
-  CheckCircle2, 
-  ArrowRight, 
-  Menu, 
-  X, 
-  Star,
-  Users,
-  BarChart3,
-  ShieldCheck
-} from 'lucide-react';
+import { ChevronRight, MessageSquare, Globe, CheckCircle2, ArrowRight, Menu, X, Star, Users, BarChart3, ShieldCheck } from 'lucide-react';
+import IntecubeLogo from './IntecubeLogo';
 
 // --- Types ---
-
 declare global {
   namespace React {
     namespace JSX {
@@ -33,7 +16,6 @@ declare global {
 }
 
 // --- Components ---
-
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -53,40 +35,39 @@ const Navbar = () => {
   ];
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/80 backdrop-blur-lg border-b border-slate-200 py-4 shadow-sm' : 'bg-transparent py-6'
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-lg border-b border-slate-200 py-4 shadow-sm'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Zap className="text-white w-5 h-5 fill-current" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-slate-900">Intecube</span>
+        <div className="flex items-center gap-3">
+          <IntecubeLogo />
         </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 rounded-md px-2 py-1"
             >
               {link.name}
             </a>
           ))}
-          <a 
-            href="#contact" 
-            className="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-blue-600 transition-all shadow-lg hover:shadow-blue-200"
+          <a
+            href="#contact"
+            className="btn-primary text-sm font-medium hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-cta)] focus:ring-offset-2"
           >
             Get Demo
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="md:hidden text-slate-900"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -97,7 +78,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -105,18 +86,18 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+                <a
+                  key={link.name}
+                  href={link.href}
                   className="text-lg font-medium text-slate-900"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <a 
-                href="#contact" 
-                className="bg-blue-600 text-white px-6 py-3 rounded-xl text-center font-medium"
+              <a
+                href="#contact"
+                className="btn-primary w-full text-center font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Your Free Website Demo
@@ -134,8 +115,8 @@ const Hero = () => {
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       {/* Background Accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10">
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-60" />
-        <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-violet-50 rounded-full blur-3xl opacity-60" />
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[var(--color-primary)]/10 rounded-full blur-3xl opacity-60" />
+        <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-[var(--color-secondary)]/10 rounded-full blur-3xl opacity-60" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 text-center">
@@ -155,61 +136,62 @@ const Hero = () => {
             High-performance, AI-powered websites and intelligent chat widgets designed specifically for service businesses to capture more leads automatically.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="#contact" 
-              className="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-600 transition-all shadow-xl hover:shadow-blue-200 flex items-center justify-center gap-2 group"
+            <a
+              href="#contact"
+              className="btn-primary w-full sm:w-auto text-lg font-semibold flex items-center justify-center gap-2"
             >
               Get Your Free Website Demo
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a 
-              href="#services" 
-              className="w-full sm:w-auto bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-50 transition-all flex items-center justify-center"
+            <a
+              href="#services"
+              className="btn-secondary w-full sm:w-auto text-lg font-semibold flex items-center justify-center"
             >
               View Services
             </a>
           </div>
         </motion.div>
 
-        {/* Hero Illustration Placeholder */}
-        <motion.div 
+        {/* Hero Illustration */}
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-20 relative max-w-5xl mx-auto"
         >
           <div className="aspect-video bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-800 relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-violet-500/20 opacity-50 group-hover:opacity-70 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-secondary)]/20 opacity-50 group-hover:opacity-70 transition-opacity" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="p-8 glass-card rounded-2xl max-w-md text-left">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 bg-[var(--color-primary)] rounded-full flex items-center justify-center">
                     <MessageSquare className="text-white w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-slate-900">AI Assistant</p>
+                    <p className="text-sm font-bold text-[var(--color-text)]">AI Assistant</p>
                     <p className="text-xs text-slate-500">Online & Ready</p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-700 mb-4">"Hello! I noticed you're looking for a plumber. Would you like to book a free quote for tomorrow morning?"</p>
                 <div className="flex gap-2">
-                  <div className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-lg">Yes, please!</div>
+                  <div className="px-4 py-2 bg-[var(--color-cta)] text-white text-xs font-bold rounded-lg">Yes, please!</div>
                   <div className="px-4 py-2 bg-slate-100 text-slate-600 text-xs font-bold rounded-lg">Not now</div>
                 </div>
               </div>
             </div>
           </div>
+
           {/* Floating elements */}
           <div className="absolute -top-6 -left-6 p-4 glass-card rounded-xl hidden md:block animate-bounce" style={{ animationDuration: '3s' }}>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="text-xs font-bold text-slate-700">+24% Conversion</span>
+              <div className="w-2 h-2 bg-[var(--color-cta)] rounded-full" />
+              <span className="text-xs font-bold text-[var(--color-text)]">+24% Conversion</span>
             </div>
           </div>
           <div className="absolute -bottom-6 -right-6 p-4 glass-card rounded-xl hidden md:block animate-bounce" style={{ animationDuration: '4s' }}>
             <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-blue-600" />
-              <span className="text-xs font-bold text-slate-700">12 New Leads Today</span>
+              <Users className="w-4 h-4 text-[var(--color-primary)]" />
+              <span className="text-xs font-bold text-[var(--color-text)]">12 New Leads Today</span>
             </div>
           </div>
         </motion.div>
@@ -226,29 +208,28 @@ const SocialProof = () => {
   ];
 
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by local service businesses</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale">
-            {/* Placeholder Logos */}
             {['Apex Plumbing', 'Zenith HVAC', 'Luxe Landscaping', 'Prime Electric', 'Nova Cleaning'].map(logo => (
-              <span key={logo} className="text-xl font-bold text-slate-900 italic">{logo}</span>
+              <span key={logo} className="text-xl font-bold text-[var(--color-text)] italic">{logo}</span>
             ))}
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
           {stats.map((stat, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="text-center p-8 bg-white rounded-2xl shadow-sm border border-slate-100"
+              className="text-center p-8 bg-[var(--color-background)] rounded-2xl shadow-sm border border-slate-100"
             >
-              <p className="text-4xl font-extrabold text-slate-900 mb-2">{stat.value}</p>
+              <p className="text-4xl font-extrabold text-[var(--color-text)] mb-2">{stat.value}</p>
               <p className="text-slate-500 font-medium">{stat.label}</p>
             </motion.div>
           ))}
@@ -256,7 +237,7 @@ const SocialProof = () => {
 
         <div className="mt-20 max-w-4xl mx-auto">
           <div className="p-10 bg-white rounded-3xl shadow-sm border border-slate-100 relative">
-            <div className="absolute -top-5 left-10 text-blue-600">
+            <div className="absolute -top-5 left-10 text-[var(--color-primary)]">
               <Star className="w-10 h-10 fill-current" />
             </div>
             <p className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-8">
@@ -267,7 +248,7 @@ const SocialProof = () => {
                 <img src="https://picsum.photos/seed/person1/100/100" alt="Client" referrerPolicy="no-referrer" />
               </div>
               <div>
-                <p className="font-bold text-slate-900">David Miller</p>
+                <p className="font-bold text-[var(--color-text)]">David Miller</p>
                 <p className="text-sm text-slate-500">Owner, Miller & Sons HVAC</p>
               </div>
             </div>
@@ -284,21 +265,21 @@ const Services = () => {
       title: 'AI Website Design',
       description: 'High-speed, conversion-optimized websites built to showcase your services and turn visitors into customers.',
       icon: <Globe className="w-6 h-6 text-white" />,
-      color: 'bg-blue-600',
+      color: 'bg-[var(--color-primary)]',
       benefits: ['Mobile-First Design', 'SEO Optimized', 'Fast Load Times']
     },
     {
       title: 'Website Chat Widgets',
       description: 'Intelligent AI chat that engages visitors 24/7, answers questions, and captures lead information automatically.',
       icon: <MessageSquare className="w-6 h-6 text-white" />,
-      color: 'bg-violet-600',
+      color: 'bg-[var(--color-secondary)]',
       benefits: ['24/7 Lead Capture', 'Instant Responses', 'Appointment Booking']
     },
     {
       title: 'Lead Capture Systems',
       description: 'Complete automation systems that funnel leads directly to your phone or CRM, ensuring no customer is missed.',
-      icon: <Zap className="w-6 h-6 text-white" />,
-      color: 'bg-amber-500',
+      icon: <BarChart3 className="w-6 h-6 text-white" />,
+      color: 'bg-[var(--color-cta)]',
       benefits: ['Automated Follow-ups', 'CRM Integration', 'Instant Notifications']
     }
   ];
@@ -315,18 +296,18 @@ const Services = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 rounded-3xl border border-slate-100 bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all group"
+              className="card p-8 rounded-3xl border border-slate-100 bg-white hover:bg-[var(--color-background)] group"
             >
-              <div className={`w-14 h-14 ${service.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
+              <div className={`w-14 h-14 ${service.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-200`}>
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
+              <h3 className="text-2xl font-bold text-[var(--color-text)] mb-4">{service.title}</h3>
               <p className="text-slate-600 mb-8 leading-relaxed">{service.description}</p>
               <ul className="space-y-3 mb-8">
                 {service.benefits.map((benefit, bIdx) => (
@@ -336,7 +317,7 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className="text-blue-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+              <a href="#contact" className="text-[var(--color-primary)] font-bold flex items-center gap-2 hover:gap-3 transition-all duration-200 group-hover:text-[var(--color-secondary)]">
                 Learn More <ArrowRight className="w-4 h-4" />
               </a>
             </motion.div>
@@ -368,8 +349,7 @@ const HowItWorks = () => {
 
   return (
     <section id="how-it-works" className="py-24 bg-slate-900 text-white overflow-hidden relative">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-[120px] -z-0" />
-      
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[var(--color-primary)]/10 blur-[120px] -z-0" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">Simple 3-Step Process</h2>
@@ -380,7 +360,7 @@ const HowItWorks = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {steps.map((step, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -392,16 +372,16 @@ const HowItWorks = () => {
               <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
               <p className="text-slate-400 leading-relaxed">{step.description}</p>
               {idx < 2 && (
-                <div className="hidden lg:block absolute top-10 -right-4 w-12 h-px bg-gradient-to-r from-blue-500 to-transparent" />
+                <div className="hidden lg:block absolute top-10 -right-4 w-12 h-px bg-gradient-to-r from-[var(--color-primary)] to-transparent" />
               )}
             </motion.div>
           ))}
         </div>
 
         <div className="mt-20 text-center">
-          <a 
-            href="#contact" 
-            className="inline-flex bg-blue-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-900/20"
+          <a
+            href="#contact"
+            className="btn-primary inline-flex text-white px-10 py-4 rounded-full text-lg font-bold hover:shadow-xl shadow-[var(--color-cta)]/20"
           >
             Start Your Project Today
           </a>
@@ -415,13 +395,13 @@ const WhyChooseUs = () => {
   const reasons = [
     {
       title: 'Built for Conversions',
-      description: 'We don\'t just build pretty sites. We build sales machines designed to convert traffic into revenue.',
+      description: "We don't just build pretty sites. We build sales machines designed to convert traffic into revenue.",
       icon: <BarChart3 className="w-6 h-6" />
     },
     {
       title: 'AI-Powered Automation',
-      description: 'Our websites work for you 24/7, capturing leads and answering questions even when you\'re offline.',
-      icon: <Zap className="w-6 h-6" />
+      description: "Our websites work for you 24/7, capturing leads and answering questions even when you're offline.",
+      icon: <CheckCircle2 className="w-6 h-6" />
     },
     {
       title: 'Fast Turnaround',
@@ -440,16 +420,16 @@ const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-text)] mb-8 leading-tight">
               Why Service Businesses <br />
-              <span className="text-blue-600">Trust Intecube</span>
+              <span className="text-gradient">Trust Intecube</span>
             </h2>
             <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-              Most agencies build websites that look good but don't perform. We focus on the only metric that matters for your business: **Leads.**
+              Most agencies build websites that look good but don't perform. We focus on the only metric that matters for your business: Leads.
             </p>
             <div className="space-y-8">
               {reasons.map((reason, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -457,22 +437,23 @@ const WhyChooseUs = () => {
                   transition={{ delay: idx * 0.1 }}
                   className="flex gap-6"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-[var(--color-background)] text-[var(--color-primary)] rounded-xl flex items-center justify-center shadow-sm">
                     {reason.icon}
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-2">{reason.title}</h4>
+                    <h4 className="text-xl font-bold text-[var(--color-text)] mb-2">{reason.title}</h4>
                     <p className="text-slate-600">{reason.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
+
           <div className="relative">
             <div className="aspect-square bg-slate-100 rounded-3xl overflow-hidden relative">
-              <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" 
-                alt="Our Team" 
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                alt="Our Team"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -482,9 +463,8 @@ const WhyChooseUs = () => {
                 <p className="text-slate-600 italic">To help local service businesses dominate their market through superior technology and design.</p>
               </div>
             </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-violet-600/10 rounded-full blur-3xl" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[var(--color-primary)]/10 rounded-full blur-2xl" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[var(--color-secondary)]/10 rounded-full blur-3xl" />
           </div>
         </div>
       </div>
@@ -493,17 +473,11 @@ const WhyChooseUs = () => {
 };
 
 const LeadCapture = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    business: '',
-    contact: '',
-    service: 'AI Website Design'
-  });
+  const [formState, setFormState] = useState({ name: '', business: '', contact: '', service: 'AI Website Design' });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission
     setTimeout(() => {
       setIsSubmitted(true);
     }, 1000);
@@ -520,29 +494,20 @@ const LeadCapture = () => {
                 Fill out the form and we'll build you a custom demo showing exactly how AI can transform your website.
               </p>
               <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5 text-blue-400" />
+                {['Free Strategy Session', 'Custom AI Demo', 'No-Obligation Quote'].map((item) => (
+                  <div key={item} className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-[var(--color-cta)]" />
+                    </div>
+                    <span className="text-sm font-medium">{item}</span>
                   </div>
-                  <span className="text-sm font-medium">Free Strategy Session</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <span className="text-sm font-medium">Custom AI Demo</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <span className="text-sm font-medium">No-Obligation Quote</span>
-                </div>
+                ))}
               </div>
             </div>
             <div className="mt-12 pt-12 border-t border-white/10">
-              <p className="text-xs text-slate-500 uppercase tracking-widest mb-2">Contact Us Directly</p>
-              <p className="text-lg font-bold">hello@intecube.com</p>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Use the form to submit your request and our team will follow up with a tailored proposal.
+              </p>
             </div>
           </div>
 
@@ -552,64 +517,33 @@ const LeadCapture = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Full Name</label>
-                    <input 
-                      required
-                      type="text" 
-                      placeholder="John Doe"
-                      className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                      value={formState.name}
-                      onChange={(e) => setFormState({...formState, name: e.target.value})}
-                    />
+                    <input required type="text" placeholder="John Doe" className="input w-full" value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Business Name</label>
-                    <input 
-                      required
-                      type="text" 
-                      placeholder="Doe Plumbing Co."
-                      className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                      value={formState.business}
-                      onChange={(e) => setFormState({...formState, business: e.target.value})}
-                    />
+                    <input required type="text" placeholder="Doe Plumbing Co." className="input w-full" value={formState.business} onChange={(e) => setFormState({...formState, business: e.target.value})} />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700">Email or Phone Number</label>
-                  <input 
-                    required
-                    type="text" 
-                    placeholder="john@example.com"
-                    className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                    value={formState.contact}
-                    onChange={(e) => setFormState({...formState, contact: e.target.value})}
-                  />
+                  <input required type="text" placeholder="john@example.com" className="input w-full" value={formState.contact} onChange={(e) => setFormState({...formState, contact: e.target.value})} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700">Service Needed</label>
-                  <select 
-                    className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none"
-                    value={formState.service}
-                    onChange={(e) => setFormState({...formState, service: e.target.value})}
-                  >
+                  <select className="input w-full appearance-none" value={formState.service} onChange={(e) => setFormState({...formState, service: e.target.value})}>
                     <option>AI Website Design</option>
                     <option>Website Chat Widgets</option>
                     <option>Automation / Lead Systems</option>
                     <option>Full Digital Package</option>
                   </select>
                 </div>
-                <button 
-                  type="submit"
-                  className="w-full bg-blue-600 text-white py-5 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 flex items-center justify-center gap-2"
-                >
-                  Get My Free Website Demo
-                  <ArrowRight className="w-5 h-5" />
+                <button type="submit" className="btn-primary w-full text-lg font-bold flex items-center justify-center gap-2">
+                  Get My Free Website Demo <ArrowRight className="w-5 h-5" />
                 </button>
-                <p className="text-center text-xs text-slate-400">
-                  By clicking, you agree to our privacy policy. We'll never spam you.
-                </p>
+                <p className="text-center text-xs text-slate-400">By clicking, you agree to our privacy policy. We'll never spam you.</p>
               </form>
             ) : (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="h-full flex flex-col items-center justify-center text-center py-20"
@@ -621,10 +555,7 @@ const LeadCapture = () => {
                 <p className="text-slate-600 text-lg mb-8">
                   Thanks for reaching out, {formState.name.split(' ')[0]}. Our team is already reviewing your business and will be in touch within 24 hours with your custom demo.
                 </p>
-                <button 
-                  onClick={() => setIsSubmitted(false)}
-                  className="text-blue-600 font-bold hover:underline"
-                >
+                <button onClick={() => setIsSubmitted(false)} className="text-blue-600 font-bold hover:underline">
                   Send another request
                 </button>
               </motion.div>
@@ -640,43 +571,26 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-slate-100 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Zap className="text-white w-5 h-5 fill-current" />
-              </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900">Intecube</span>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <IntecubeLogo />
             </div>
-            <p className="text-slate-500 max-w-sm mb-8 leading-relaxed">
+            <p className="text-slate-500 max-w-xl leading-relaxed">
               We build high-performance, AI-powered websites for service businesses. Our mission is to help local providers dominate their market through superior technology.
             </p>
-            <div className="flex gap-4">
-              {/* Social placeholders */}
-              {[1, 2, 3].map(i => (
-                <div key={i} className="w-10 h-10 bg-slate-100 rounded-full hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer flex items-center justify-center" />
-              ))}
-            </div>
           </div>
           <div>
-            <h4 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Navigation</h4>
+            <h4 className="font-bold text-[var(--color-text)] mb-6 uppercase text-xs tracking-widest">Explore</h4>
             <ul className="space-y-4">
-              <li><a href="#services" className="text-slate-500 hover:text-blue-600 transition-colors">Services</a></li>
-              <li><a href="#how-it-works" className="text-slate-500 hover:text-blue-600 transition-colors">How It Works</a></li>
-              <li><a href="#why-us" className="text-slate-500 hover:text-blue-600 transition-colors">Why Choose Us</a></li>
-              <li><a href="#contact" className="text-slate-500 hover:text-blue-600 transition-colors">Get Started</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Contact</h4>
-            <ul className="space-y-4">
-              <li className="text-slate-500">hello@intecube.com</li>
-              <li className="text-slate-500">+1 (555) 123-4567</li>
-              <li className="text-slate-500">San Francisco, CA</li>
+              <li><a href="#services" className="text-slate-500 hover:text-[var(--color-primary)] transition-colors">Services</a></li>
+              <li><a href="#how-it-works" className="text-slate-500 hover:text-[var(--color-primary)] transition-colors">How It Works</a></li>
+              <li><a href="#why-us" className="text-slate-500 hover:text-[var(--color-primary)] transition-colors">Why Choose Us</a></li>
+              <li><a href="#contact" className="text-slate-500 hover:text-[var(--color-primary)] transition-colors">Get Started</a></li>
             </ul>
           </div>
         </div>
-        <div className="pt-10 border-t border-slate-100 flex flex-col md:row justify-between items-center gap-4">
+        <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-slate-400">© 2026 Intecube Digital Agency. All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="text-xs text-slate-400 hover:text-slate-600">Privacy Policy</a>
@@ -689,10 +603,9 @@ const Footer = () => {
 };
 
 // --- Main App ---
-
 export default function App() {
   return (
-    <div className="min-h-screen selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen selection:bg-[var(--color-primary)] selection:text-white">
       <Navbar />
       <main>
         <Hero />
