@@ -19,12 +19,7 @@ declare global {
 
 // --- Logo Component ---
 const IntecubeLogo = ({ dark = true }: { dark?: boolean }) => (
-  <div className="flex items-center gap-2">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="16,2 30,28 2,28" fill="#2563eb"/>
-    </svg>
-    <span className={`text-xl font-bold ${dark ? 'text-slate-900' : 'text-white'}`}>Intecube</span>
-  </div>
+  <span className={`text-xl font-bold tracking-tight ${dark ? 'text-slate-900' : 'text-white'}`}>Intecube</span>
 );
 
 // --- Components ---
