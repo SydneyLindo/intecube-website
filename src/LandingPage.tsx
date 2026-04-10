@@ -456,7 +456,7 @@ const LeadCapture = () => {
                   <label htmlFor="fullName" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
                   <input
                     id="fullName" required type="text" placeholder="John Doe"
-                    className="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:bg-white outline-none transition-all duration-200 text-sm font-medium"
+                    className="w-full px-4 py-3.5 bg-white border-2 border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:border-blue-500 outline-none transition-all duration-200 text-sm font-medium"
                     value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})}
                   />
                 </div>
@@ -464,7 +464,7 @@ const LeadCapture = () => {
                   <label htmlFor="businessName" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Business Name</label>
                   <input
                     id="businessName" required type="text" placeholder="Doe Plumbing Co."
-                    className="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:bg-white outline-none transition-all duration-200 text-sm font-medium"
+                    className="w-full px-4 py-3.5 bg-white border-2 border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:border-blue-500 outline-none transition-all duration-200 text-sm font-medium"
                     value={formState.business} onChange={(e) => setFormState({...formState, business: e.target.value})}
                   />
                 </div>
@@ -474,7 +474,7 @@ const LeadCapture = () => {
                 <label htmlFor="contactInfo" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Email or Phone Number</label>
                 <input
                   id="contactInfo" required type="text" placeholder="john@example.com or +27 82 000 0000"
-                  className="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:bg-white outline-none transition-all duration-200 text-sm font-medium"
+                  className="w-full px-4 py-3.5 bg-white border-2 border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:border-blue-500 outline-none transition-all duration-200 text-sm font-medium"
                   value={formState.contact} onChange={(e) => setFormState({...formState, contact: e.target.value})}
                 />
               </div>
@@ -576,3 +576,4 @@ export default function LandingPage() {
     </div>
   );
 }
+
